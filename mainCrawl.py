@@ -34,10 +34,11 @@ def checkWebsite(url):
         if not (a['href'].startswith("http")):
             a['href'] = "http://" + a['href']
 
+        if "../" in a['href']:
+            a['href'] = "http://www.cphcs.ca.gov/pra.aspx"
+
         print("Found the URL:", a['href'])
         if not (a['href'].endswith(".pdf") or a['href'].endswith(".xls") or a['href'].endswith(".docx")):
-            if (a['href'].startswith("../")):
-                a['href'] = a['href'].replace('../', '')
             checkWebsite(a['href'])
 
 
